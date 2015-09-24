@@ -1,0 +1,8 @@
+#!/bin/bash
+CER='.cer'
+CRT='.crt'
+KEY='.key'
+VPNNAME=$(echo $1 | sed -e 's/.ovpn$//g')
+sed -n '/<ca>/,/<\/ca>/p' $1 | tail -n +2 > $VPNNAME$CER
+sed -n '/<cert>/,/<\/cert>/p' $1 | tail -n +2 > $VPNNAME$CRT
+sed -n '/<key>/,/<\/key>/p' $1 | tail -n +2 > $VPNNAME$KEY
