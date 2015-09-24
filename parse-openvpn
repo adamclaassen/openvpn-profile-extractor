@@ -3,6 +3,10 @@ CER='.cer'
 CRT='.crt'
 KEY='.key'
 VPNNAME=$(echo $1 | sed -e 's/.ovpn$//g')
-sed -n '/<ca>/,/<\/ca>/p' $1 | tail -n +2 > $VPNNAME$CER
-sed -n '/<cert>/,/<\/cert>/p' $1 | tail -n +2 > $VPNNAME$CRT
-sed -n '/<key>/,/<\/key>/p' $1 | tail -n +2 > $VPNNAME$KEY
+mkdir $VPNNAME
+sed -n '/<ca>/,/<\/ca>/p' $1 | tail -n +2 > $VPNNAME/$VPNNAME$(echo .cer)
+sed -n '/<cert>/,/<\/cert>/p' $1 | tail -n +2 > $VPNNAME/$VPNNAME$(echo .crt)
+sed -n '/<key>/,/<\/key>/p' $1 | tail -n +2 > $VPNNAME/$VPNNAME$(echo .key)
+mv $1 $VPNNAME
+
+
