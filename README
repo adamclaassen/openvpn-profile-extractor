@@ -1,0 +1,11 @@
+#There should be a copy of the GNU GPL v2.0 included with this project.
+
+This program relies only on standard linux utilities.
+
+To use the VPN profile extractor:
+
+1. ensure the script has execute permissions for your user
+2. $ parse-openvpn /path/to/profile.ovpn
+3. you now have the CA cert, the user cert, and the key in seperate 
+files, suitable for use with NetworkManger when importing an OpenVPN 
+profile. 
